@@ -48,6 +48,30 @@
             gap: 20px;
         }
 
+        .nav-links a {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .dashboard-button {
+            background-color: #007bff !important;
+            color: white !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            padding: 8px 16px !important;
+            border: none !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
+        }
+
+        .dashboard-button:hover {
+            background-color: #0056b3;
+        }
+
         .logout-button {
             background-color: red !important;
             color: white !important;
@@ -62,6 +86,10 @@
         .logout-button:hover {
             background-color: darkred;
         }
+
+        
+
+       
     </style>
 </head>
 
@@ -73,11 +101,12 @@
         </div>
 
         <div class="nav-links">
+        <a href="{{ route('pdash', ['id' => Auth::id()]) }}" class="dashboard-button">Dashboard</a>
+            
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="logout-button">Logout</button>
             </form>
-
         </div>
     </nav>
 

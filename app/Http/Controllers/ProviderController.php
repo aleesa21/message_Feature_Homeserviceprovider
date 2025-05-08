@@ -100,9 +100,6 @@ class ProviderController extends Controller
         $otherProviders = User::where('role', 'Service-provider')
             ->where('id', '!=', $provider->id) // Exclude logged-in user
             ->get();
-
-
-        // Pass both provider & other providers to the view
         return view('provider.providerhome', compact('provider', 'otherProviders'));
     }
     public function otherproviderdetails($id)
