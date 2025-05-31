@@ -20,6 +20,7 @@ use App\Http\Middleware\UserMiddleware;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/search', [WelcomeController::class, 'search'])->name('search');
 Route::get('/search/suggestions', [WelcomeController::class, 'searchSuggestions'])->name('search.suggestions');
+Route::get('/searchh', [WelcomeController::class, 'searchh'])->name('searchh');
 
 
 

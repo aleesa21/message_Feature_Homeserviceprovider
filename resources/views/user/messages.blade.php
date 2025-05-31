@@ -42,10 +42,7 @@
         tbody tr:hover {
             background-color: #f5f5f5; /* Subtle hover effect */
         }
-        .status-accepted { color: #28a745; font-weight: 500; }
-        .status-rejected { color: #dc3545; font-weight: 500; }
-        .status-pending { color: #ffc107; font-weight: 500; }
-        .button {
+        .chat-button {
             display: inline-block;
             padding: 10px 18px;
             margin-top: 5px;
@@ -56,8 +53,10 @@
             font-size: 0.95em;
             transition: background-color 0.2s ease-in-out;
             border: 1px solid transparent;
+            position: relative; /* For positioning the indicator */
+            padding-right: 1.5em; /* Make space for the indicator */
         }
-        .button:hover {
+        .chat-button:hover {
             background-color: #0056b3;
             border-color: #0056b3;
         }
@@ -80,6 +79,20 @@
         .home-button:hover {
             background-color: #5a6268;
             border-color: #5a6268;
+        }
+        .status-accepted { color: #28a745; font-weight: 500; }
+        .status-rejected { color: #dc3545; font-weight: 500; }
+        .status-pending { color: #ffc107; font-weight: 500; }
+        .status-completed { color: #17a2b8; font-weight: 500; }
+        .unread-indicator {
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: greenyellow;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px; /* Adjust vertical position */
+            right: 5px; /* Adjust horizontal position */
         }
     </style>
 </head>
@@ -117,7 +130,12 @@
                             </td>
                             <td style="text-align: center;">
                                 @if ($request->status === 'accepted' && $request->provider_id)
-                                    <a href="{{ route('chat.show', $request->id) }}" class="button">Chat</a>
+                                    <a href="{{ route('chat.show', $request->id) }}" class="chat-button">
+                                        Chat
+                                        @if ($request->unread_count > 0)
+                                            <span class="unread-indicator"></span>
+                                        @endif
+                                    </a>
                                 @elseif ($request->status === 'pending' && !$request->provider_id)
                                     <span class="text-muted">Waiting</span>
                                 @elseif ($request->status === 'rejected')

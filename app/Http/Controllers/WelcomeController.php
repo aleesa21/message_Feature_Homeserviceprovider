@@ -65,7 +65,23 @@ class WelcomeController extends Controller
     }
     
 
-  
+  public function searchh(Request $request)
+    {
+        // Get the search term from the query input
+        $searchTerm = $request->input('query');
+        
+        // Search ONLY Service Providers by service type, name, and address
+        $users = User::where('role', 'Service-provider') // Ensure only service providers
+                     ->where(function ($q) use ($searchTerm) {
+                         $q->whereJsonContains('service_type', $searchTerm)  // Search in JSON column
+                           ->orWhere('name', 'like', "%$searchTerm%")  // Search in the name
+                           ->orWhere('address', 'like', "%$searchTerm%");  // Search in the address
+                     })
+                     ->get();
+    
+        // Return the search results to the view
+        return view('searchresult', compact('users'));
+    }
 
     
 

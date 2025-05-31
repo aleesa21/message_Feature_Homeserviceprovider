@@ -87,7 +87,7 @@
 
 .providers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increase card width */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
     justify-content: center;
 }
@@ -99,8 +99,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.3s ease;
-    width: 280px; /* Increase card size */
-    position: relative;  /* Required for positioning the message */
+    width: 280px; 
+    position: relative;  
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
@@ -110,9 +110,9 @@
 }
 
 .provider-img img {
-    width: 100%; /* Make image take full width */
-    height: 180px; /* Adjust image height */
-    object-fit: cover; /* Ensure the image fits properly */
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover;
     border-radius: 10px;
 }
 

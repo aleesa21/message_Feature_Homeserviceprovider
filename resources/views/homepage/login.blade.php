@@ -116,19 +116,17 @@
             /* Optional: light red background for emphasis */
         }
         a {
-    text-decoration: none;
-}
-
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-    <a href="/">
-        <div class="name">Home Service Provider</div>
-    </a>
+        <a href="/">
+            <div class="name">Home Service Provider</div>
+        </a>
 
-        <!-- Login Form -->
         <form action="{{ route('loguser') }}" method="POST">
             @csrf
             <input type="hidden" name="redirect" value="{{ request('redirect') }}">
@@ -153,6 +151,10 @@
 
             <div class="form-actions">
                 <button type="submit">LOG IN</button>
+            </div>
+
+            <div class="form-footer">
+                Not registered yet? <a href="/register">Register here</a>
             </div>
         </form>
     </div>
