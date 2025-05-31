@@ -22,7 +22,7 @@ Route::get('/search', [WelcomeController::class, 'search'])->name('search');
 Route::get('/search/suggestions', [WelcomeController::class, 'searchSuggestions'])->name('search.suggestions');
 Route::get('/searchh', [WelcomeController::class, 'searchh'])->name('searchh');
 
-
+Route::view('/about-us', 'aboutus')->name('about-us');
 
 //index page route
 Route::get('/index', function () {

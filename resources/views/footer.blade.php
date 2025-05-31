@@ -143,10 +143,10 @@
         </div>
         <div class="footer-section links">
             <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Providers</a>
-            <a href="#">About Us</a>
+            <a href="/">Home</a>
+            <a href="/">Services</a>
+            <a href="/">Providers</a>
+            <a href="/about-us">About Us</a>
             <a href="#">Contact Us</a>
         </div>
         <div class="footer-section biratnagar-info">
