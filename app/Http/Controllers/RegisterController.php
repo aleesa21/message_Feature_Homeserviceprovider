@@ -9,7 +9,7 @@ class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('homepage.register'); // Adjust the path to your register view
+        return view('homepage.register'); 
     }
     public function register(Request $req)
     {
@@ -20,11 +20,11 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|unique:users|max:10',
             'address' => 'required|string|max:500',
-            'password' => 'required',
+            'password' => 'required|string|min:8',
             'confirm-password' => 'required|same:password',
         ]);
 
-        // Save user data to the database
+        // Save user ko data to  database
         $user = User::create([
             'role' => $req->input('register-as'),
             'name' => $req->input('name'),
@@ -34,22 +34,18 @@ class RegisterController extends Controller
             'password' => Hash::make($req->input('password')),
         ]);
 
-        // Ensure that $user is properly defined before calling Auth::login()
         if ($user) {
-            // Automatically log in the user
-            Auth::login($user);  // Log the user in
+            Auth::login($user);  
 
-            // Redirect based on role
             if ($user->role === 'Service-provider') {
                 // Redirect to the service provider's dashboard
                 return redirect()->route('profile.update');
             } else {
-                // Redirect to the home page for normal users
+                // Redirect gar home page ma for normal users
                 return redirect('userdash');
             }
         }
 
-        // If user is not created, return back with an error
         return back()->withErrors(['registration' => 'An error occurred during registration. Please try again.']);
     }
 }
